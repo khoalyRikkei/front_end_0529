@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - Session 1</title>
+    <style>
+      section {
+        /* height: 400px; */
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <!-- Đường dẫn link -->
+          <li><a href="/">Home</a></li>
+          <li>
+            <a href="./about.html"><b>About</b></a>
+          </li>
+          <li><a href="#test">Trỏ tới ID</a></li>
+          <li><a href="#product">Product</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <h3>Giới thiệu về thẻ img</h3>
+
+        <!-- Đường dẫn trực tiếp - tuyệt đối -->
+
+        <img
+          src="https://cdn.pixabay.com/photo/2023/05/27/18/15/barn-swallows-8022044__340.jpg"
+          alt=""
+        />
+
+        <!-- alt là thuộc tính giúp hiển thị chữ mô tả nội dung ảnh trong trường hợp ảnh không hiển thị -->
+
+        <!-- Đường dẫn tương đối - local -->
+        <img src="../images/deer-8008410_640.jpg" alt="deer-img" />
+        <img src="./images/deer-8008410_640.jpg" alt="deer-img" />
+      </section>
+
+      <section></section>
+      <section id="test">
+        <h3>Link tới id</h3>
+      </section>
+      <section id="banner">
+        <img
+          src="https://cdn.pixabay.com/photo/2023/05/25/22/07/river-8018379_1280.jpg"
+          alt=""
+        />
+      </section>
+    </main>
+    <footer id="contact">
+      <h4>Liên hệ tôi qua std: 0909000999</h4>
+    </footer>
+  </body>
+</html>
