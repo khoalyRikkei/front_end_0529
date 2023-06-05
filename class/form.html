@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+  </head>
+  <body>
+    <form>
+      <!-- thuộc tính disable -> mất khả năng thao tác đối với thẻ đó -->
+      <!-- readonly -> không chỉnh sửa được-->
+      <input type="text" name="id" value="SV01" disabled />
+      <input type="text" name="address" readonly value="Đà Nẵng" />
+      <input name="userName" />
+      <br />
+
+      <!-- Ví dụ -->
+      <h3>Chọn màu sắc bạn muốn</h3>
+
+      <input type="checkbox" id="red" /> <label for="red"> Màu đỏ</label> <br />
+      <input type="checkbox" id="green" /> <label for="green"> Màu xanh</label>
+      <br />
+      <input type="checkbox" id="yellow" />
+      <label for="yellow"> Màu vàng</label> <br />
+      <input type="checkbox" id="pink" /> <label for="pink"> Màu hồng</label>
+      <br />
+
+      <!-- password -->
+      <input type="password" name="password" id="password" />
+      <br />
+      <!-- date -->
+      <input type="date" name="doB" id="doB" />
+      <br />
+
+      <!-- color -->
+      <input type="color" name="color" id="colr" />
+      <br />
+
+      <!-- Radio -->
+      <label for="male">Giới tính</label>
+      <br />
+      <input type="radio" name="gender" id="male" value="0" /><label for="male">
+        Nam</label
+      >
+      <br />
+
+      <input type="radio" name="gender" id="female" value="1" /><label
+        for="female"
+      >
+        Nữ</label
+      >
+      <br />
+      <input type="radio" name="gender" id="other" value="2" /><label
+        for="other"
+      >
+        Khác</label
+      >
+      <br />
+
+      <!-- Checkbox -->
+      <h3>Loài vật mà bạn yêu thích</h3>
+      <input type="checkbox" id="dog" name="animal1" value="dog" />
+      <label for="dog"> Chó</label> <br />
+      <input type="checkbox" id="cat" name="animal2" value="cat" />
+      <label for="cat" name="animal3"> Mèo</label>
+      <br />
+      <input type="checkbox" id="pig" name="animal3" value="pig" />
+      <label for="pig"> Heo</label> <br />
+      <input type="checkbox" id="tiger" value="tiger" name="animal4" />
+      <label for="tiger"> Hổ</label>
+      <br />
+
+      <!-- select -->
+      Đăng ký khóa học
+      <select name="course">
+        <!-- <option value="">----Select----</option> -->
+        <option value="0">Javascript</option>
+        <option value="1">Java</option>
+      </select>
+      <br />
+
+      <!-- textarea -->
+      <h3>Lời nhắn</h3>
+      <textarea name="message" id="" cols="30" rows="10"></textarea>
+      <!-- Submit -->
+      <br />
+      <button>Đăng ký</button>
+      <button>Reset</button>
+      <input type="submit" value="Submit" />
+      <input type="reset" value="Làm mới form" />
+
+      <br />
+    </form>
+
+    <!-- radio -name phải cùng giá trị các radio muốn lựa chọn, bắt buộc phải có value để phân biệt -->
+  </body>
+</html>
