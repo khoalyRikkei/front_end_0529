@@ -37,3 +37,15 @@ article.test {
   display: block;
   /* margin: 10px 10px 10px 10px; */
 }
+
+.test {
+  width: 300px;
+  height: 100px;
+  text-align: center;
+  display: inline-block;
+  /* vertical-align: middle; */
+}
+
+.test h3 {
+  vertical-align: middle;
+}
