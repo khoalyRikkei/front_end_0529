@@ -1,0 +1,39 @@
+/* External CSS */
+
+/* CSS cho tất cả element --> */
+* {
+  box-sizing: border-box;
+}
+
+h2,
+h3 {
+  color: orange;
+}
+
+section#demo-descendant-selector {
+  color: green;
+}
+
+#demo-descendant-selector h3 {
+  color: red;
+}
+section > p {
+  color: pink;
+}
+
+section.test {
+  background-color: yellow;
+}
+article.test {
+  background-color: pink;
+}
+.test {
+  background-color: rgb(59, 130, 59);
+}
+.btn {
+  padding: 10px;
+  margin: 10px 50px;
+  margin: 0 auto;
+  display: block;
+  /* margin: 10px 10px 10px 10px; */
+}
