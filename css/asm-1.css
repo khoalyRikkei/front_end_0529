@@ -1,0 +1,76 @@
+/* general CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.btn {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  padding: 10px 15px;
+  background-color: rgb(0, 166, 255);
+}
+
+/* card */
+.card {
+  margin-top: -200px;
+  display: inline-block;
+  width: 33%;
+  height: 150px;
+  padding: 20px;
+  border: 2px solid red;
+  background-color: #fff;
+}
+
+/* Header */
+header {
+  padding: 0 50px;
+}
+.navbar a {
+  /* color: white; */
+  text-decoration: none;
+}
+.navbar {
+  /* color: white; */
+}
+
+.logo {
+  display: inline-block;
+  width: 15%;
+  font-weight: 900;
+  font-size: 2em;
+}
+.menu {
+  display: inline-block;
+  width: 50%;
+}
+.menu li {
+  display: inline-block;
+}
+.feature {
+  display: inline-block;
+  width: 25%;
+}
+
+/* Banner */
+
+#banner {
+  height: 600px;
+  background-image: linear-gradient(
+      73deg,
+      rgba(55, 53, 53, 0.7) 0%,
+      rgba(55, 53, 53, 0.7) 100%
+    ),
+    url("../images/kids-1093758_1280.jpg");
+
+  background-size: cover;
+}
+
+#service {
+  padding: 0 50px;
+}
+.section-content {
+  text-align: center;
+}

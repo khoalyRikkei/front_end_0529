@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Position</title>
+    <style>
+      #relative .item {
+        position: relative;
+        top: 0px;
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+      }
+      section {
+        border: 2px solid green;
+        margin-bottom: 30px;
+      }
+      .test {
+        height: 100px;
+      }
+      #absolute {
+        position: relative;
+      }
+      #absolute .item {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 100px;
+        height: 50px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="relative">
+      <h3>Demo position</h3>
+      <h3 class="test">Demo position</h3>
+      <div class="item"></div>
+    </section>
+
+    <section id="absolute">
+      <h3>Demo position</h3>
+      <h3 class="test">Demo position</h3>
+      <div class="item">Tôi là absolute</div>
+    </section>
+  </body>
+</html>
