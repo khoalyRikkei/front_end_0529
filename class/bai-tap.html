@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài tập</title>
+    <style>
+      fieldset {
+        border: 2px solid grey;
+        margin-bottom: 30px;
+        padding: 20px;
+        border-radius: 8px;
+      }
+      legend {
+        background-color: orange;
+        padding: 10px 20px;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <fieldset>
+      <legend>Bài tập 1</legend>
+      <pre>
+            Khai báo biến :
+            -firstName có giá trị là :Academy.
+            -lastName có giá trị là : Rikkei.
+            -fullName có giá trị là : Rikkei Academy.
+      </pre>
+      <!-- Khi hành động click chuột vào button -> gọi function bai_01 -->
+      <button onclick="bai_01()">Bài 1</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Bài tập 3</legend>
+      <h3>
+        Viết chương trình nhập điểm của một sinh viên cho các môn: Vật lý, Hóa
+        học, và Sinh học. Sau đó hiển thị tổng điểm và điểm trung bình 3 môn
+        này.
+      </h3>
+      <!-- Khi hành động click chuột vào button -> gọi function bai_01 -->
+      <button onclick="bai_03()">Bài 3</button>
+      <p id="result-03"></p>
+    </fieldset>
+
+    <script>
+      // Cú pháp: function + function_name + () + { // khối lệnh thực thi}
+
+      //   có tính chất hoisting
+      function bai_01() {
+        // chỉ được chạy khi được gọi
+        // alert("Hello world");
+        const firstName = "Academy";
+        const lastName = "Rikkei";
+        const fullName = lastName + " " + firstName;
+        console.error("Cảnh báo: ", fullName);
+      }
+
+      function bai_03() {
+        const chemistryMark = Number(prompt("Nhập vào điểm Hóa"));
+        const physicsMark = Number(prompt("Nhập vào điểm lý"));
+        const biologyMark = Number(prompt("Nhập vào điểm sinh"));
+        const totalMark = chemistryMark + physicsMark + biologyMark;
+        const averageMark = (totalMark / 3).toFixed(1); //
+
+        // Truy vấn tới element
+        const resultElement = document.querySelector("#result-03");
+        console.log("element", resultElement);
+        resultElement.innerHTML =
+          "Tổng điểm của 3 môn là " +
+          totalMark +
+          " và điểm trung bình là " +
+          averageMark;
+      }
+
+      //   console.log(number);
+      //   let number_test = 10;
+    </script>
+  </body>
+</html>

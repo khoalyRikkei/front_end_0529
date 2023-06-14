@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session 08 - Variables, data types, Operations</title>
+  </head>
+  <body>
+    <section>
+      <h3>Kiểu dữ liệu</h3>
+      <ul>
+        <li>Kiểu nguyên thủy</li>
+        <li>Kiểu tham chiếu</li>
+      </ul>
+    </section>
+    <script>
+      // Có 3 cách đặt biến
+
+      // var -- toàn cục: khởi tạo, gán, khai báo lại
+
+      // let -- cục bộ: khởi tạo, gán, không khai báo lại
+
+      // const -- cục bộ: không khai báo lại, không gán
+
+      //   Kiểu dữ liệu:
+      // 1. Kiêủ nguyên thủy
+      // -number
+      // -string
+      // - boalean: true, false
+      // 2. Kiểu tham chiếu (Không nguyên thủy)
+      //  - array
+      //  - object
+      //  function
+
+      //   Toán tử so sánh và toán tử logic
+      //  == so sánh giá trị
+      //  === so sánh giá trị và kiểu dữ liệu
+      //   ! nghịch đảo
+
+      //   var number_01
+
+      console.log("Kiểm tra number", number_01);
+
+      var number_01 = 10;
+
+      console.log("Kiểm tra number lần 2", number_01);
+
+      let number_02 = 20;
+
+      {
+        var number_01 = "Hello world";
+        let number_02 = 30;
+        console.log("Kiểm tra number_02", number_02);
+
+        // let number_02 = 50 --> không gán lại
+      }
+      console.log("Kiểm tra number lần 3", number_01);
+      console.log("Kiểm tra number_02 global", number_02);
+
+      //   Ví dụ về khai báo kiểu dữ liệu
+
+      const slogan = "I'm the best";
+      // sử dụng dấu backtick (`)  -> viết được Javascript vào trong string khi kết hợp với ${}
+
+      if (!NaN) {
+        //ngược lại của giá trị
+        console.log(" NaN là kiểu falsy");
+      }
+    </script>
+  </body>
+</html>
