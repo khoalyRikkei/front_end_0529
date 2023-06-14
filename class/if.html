@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <pre>
+        if(codition) {
+            // statement
+        }
+
+        condition trả về boolean -> nếu true -> Khối lệnh trong if sẽ được thực thi
+                                -> nếu false -> thì thôi
+
+        if(codition) {
+            // statement
+        } else {
+            // statement
+        }
+        condition trả về boolean -> nếu true -> Khối lệnh trong if sẽ được thực thi
+                                -> nếu false -> Khối lệnh trong else sẽ được thực thi
+
+        if(codition) {
+            // statement
+        } else if( condition 2) {
+            // statement
+        }
+    </pre>
+    <script>
+      const color = prompt("Nhập màu bạn muốn hiển thị");
+      const content = prompt("Nhập nội dung bạn muốn hiển thị");
+      console.log(`%c ${content}`, `color: ${color};font-size: 30px`);
+    </script>
+  </body>
+</html>

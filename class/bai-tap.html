@@ -16,8 +16,14 @@
         padding: 10px 20px;
         border-radius: 8px;
       }
+      body {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
     </style>
   </head>
+
   <body>
     <fieldset>
       <legend>Bài tập 1</legend>
@@ -27,7 +33,7 @@
             -lastName có giá trị là : Rikkei.
             -fullName có giá trị là : Rikkei Academy.
       </pre>
-      <!-- Khi hành động click chuột vào button -> gọi function bai_01 -->
+      <!-- Khi hành động click chuột vào button -> gọi function bai_01 // lưu ý, gọi function phải có dấu ngoặc ()-->
       <button onclick="bai_01()">Bài 1</button>
     </fieldset>
 
@@ -43,38 +49,62 @@
       <p id="result-03"></p>
     </fieldset>
 
-    <script>
-      // Cú pháp: function + function_name + () + { // khối lệnh thực thi}
+    <fieldset>
+      <legend>Bài tập 4</legend>
+      <h3>Tính tiền điện hàng tháng</h3>
 
-      //   có tính chất hoisting
-      function bai_01() {
-        // chỉ được chạy khi được gọi
-        // alert("Hello world");
-        const firstName = "Academy";
-        const lastName = "Rikkei";
-        const fullName = lastName + " " + firstName;
-        console.error("Cảnh báo: ", fullName);
-      }
+      <p>Các mức giá điện theo điện năng tiêu thụ</p>
+      <table cellpadding="10">
+        <tr>
+          <th>Điện năng tiêu thụ</th>
+          <th>Đơn giá</th>
+        </tr>
+        <tr>
+          <td>0 - 50</td>
+          <td>1700</td>
+        </tr>
+        <tr>
+          <td>51 - 100</td>
+          <td>1800</td>
+        </tr>
+        <tr>
+          <td>101 - 200</td>
+          <td>1900</td>
+        </tr>
+        <tr>
+          <td>201 - 300</td>
+          <td>2000</td>
+        </tr>
+        <tr>
+          <td>301 - 400</td>
+          <td>2200</td>
+        </tr>
+        <tr>
+          <td>401 trở lên</td>
+          <td>2500</td>
+        </tr>
+      </table>
+      <code>Format tiền tệ</code>
+      <br />
+      <button onclick="bai_04()">Nhập chỉ số điện</button>
+      <p id="result-04"></p>
+    </fieldset>
 
-      function bai_03() {
-        const chemistryMark = Number(prompt("Nhập vào điểm Hóa"));
-        const physicsMark = Number(prompt("Nhập vào điểm lý"));
-        const biologyMark = Number(prompt("Nhập vào điểm sinh"));
-        const totalMark = chemistryMark + physicsMark + biologyMark;
-        const averageMark = (totalMark / 3).toFixed(1); //
+    <fieldset>
+      <legend>Bài tập 5</legend>
+      <h3>Tạo đồng hồ bấm giây</h3>
 
-        // Truy vấn tới element
-        const resultElement = document.querySelector("#result-03");
-        console.log("element", resultElement);
-        resultElement.innerHTML =
-          "Tổng điểm của 3 môn là " +
-          totalMark +
-          " và điểm trung bình là " +
-          averageMark;
-      }
+      <button onclick="bai_05()">Nhập vào số phút cần đếm ngược</button>
+      <p id="result-05"></p>
+    </fieldset>
 
-      //   console.log(number);
-      //   let number_test = 10;
-    </script>
+    <fieldset>
+      <legend>Bài tập 6</legend>
+      <h3>Tạo đồng hồ thực</h3>
+
+      <button onclick="bai_06()">Nhập vào số phút cần đếm ngược</button>
+      <p id="result-06"></p>
+    </fieldset>
+    <script src="./script.js"></script>
   </body>
 </html>
