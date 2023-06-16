@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      fieldset {
+        margin-bottom: 30px;
+        padding: 20px;
+        border: 2px solid grey;
+        border-radius: 8px;
+        box-shadow: 4px 4px 5px rgba(93, 91, 91, 0.715);
+      }
+      legend {
+        padding: 5px 20px;
+        font-size: 1.5em;
+        background-color: orange;
+        color: white;
+        font-weight: 800;
+        border-radius: 8px;
+      }
+      td {
+        white-space: nowrap;
+      }
+      table,
+      tr,
+      td {
+        border: 1px solid;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <fieldset>
+      <legend>Ví dụ 1</legend>
+      <h4>Sinh bảng cửu chương của 1 số</h4>
+      <button onclick="ex_01()">Click để nhập số</button>
+      <div id="result-01"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Ví dụ 2</legend>
+      <h4>Tạo đường kẻ</h4>
+      <button onclick="ex_02()">Click để nhập số</button>
+      <div id="result-02"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Ví dụ do while</legend>
+      <h4>Bí mật</h4>
+      <button onclick="ex_03()">Click để thực hiện</button>
+      <div id="result-03"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Ví dụ do break</legend>
+      <h4>Bí mật</h4>
+      <button onclick="ex_04()">Click để thực hiện</button>
+    </fieldset>
+    <fieldset>
+      <legend>Ví dụ do continue</legend>
+      <h4>Bí mật</h4>
+      <button onclick="ex_05()">Click để thực hiện</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Ví dụ vòng lặp lồng</legend>
+      <h4>Bảng cửu chương</h4>
+      <button onclick="ex_06()">Click để tao</button>
+      <table cellpadding="15" id="result-06">
+        <tr>
+          <td>1 x 1 = 1</td>
+          <td>2 x 1 = 2</td>
+          <td>3 x 1 = 3</td>
+        </tr>
+        <tr>
+          <td>1 x 2 = 2</td>
+        </tr>
+      </table>
+    </fieldset>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>
