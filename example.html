@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Function</title>
+  </head>
+  <body>
+    <script>
+      function changeStatus(status) {
+        status = !status;
+        return status;
+      }
+
+      let status = true;
+      const status2 = changeStatus(status);
+      const status3 = changeStatus;
+      console.log("status", status, "status 2", status2, status3);
+
+      function changeColor(color) {
+        console.log("%cchange color", `color: ${color}`);
+        return [color];
+      }
+
+      const arr = ["red"];
+      const a = changeColor(arr);
+      const b = changeColor("green");
+      arr[0] = "blue";
+
+      console.log(a, b, changeColor(a));
+    </script>
+  </body>
+</html>

@@ -16,7 +16,6 @@ function bai_01() {
       result += convertArray[i] + " ";
     }
   }
-
   const resultElement = document.querySelector("#result-01");
   resultElement.innerHTML = "Các số nguyên tố là:" + result;
 }
@@ -43,4 +42,48 @@ function isPrime(number) {
 
   //   return isPrime
   return true;
+}
+
+function bai_02() {
+  // B1: Lấy được giá trị
+  const meter = Number(document.querySelector("#input-02").value);
+  // B2: Chuyển đổi
+  const feet = convertToFeet(meter);
+  // B3: Hiển thị
+  renderResult(feet);
+}
+
+const meterToFeet = [];
+function bai_022() {
+  // B1: Lấy được giá trị
+  const meter = Number(document.querySelector("#input-022").value);
+  // B2: Chuyển đổi
+  const feet = convertToFeet(meter);
+
+  //   B4: Lưu kết quả lại
+
+  meterToFeet.push([meter, feet]);
+  renderMeterToFeet(meterToFeet);
+}
+
+// Chuyển đổi meter --> feet
+function convertToFeet(meter) {
+  const feet = 0.305 * meter;
+  return feet;
+}
+
+// render kết quả bài 2
+function renderResult(value) {
+  const resultElement = document.querySelector("#result-02");
+  resultElement.innerHTML = value;
+}
+
+// function render bài 2.2
+function renderMeterToFeet(data) {
+  const tbodyElement = document.querySelector("#meter-to-feet tbody");
+  let tableContent = "";
+  for (const element of data) {
+    tableContent += `<tr><td>${element[0]}</td><td>${element[1]}</td></tr>`;
+  }
+  tbodyElement.innerHTML = tableContent;
 }
