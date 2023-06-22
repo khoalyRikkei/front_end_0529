@@ -16,10 +16,18 @@
       th {
         border-collapse: collapse;
       }
+      table {
+        border: 3px solid grey;
+      }
+      th {
+        background-color: #e75912;
+        color: white;
+      }
       table tr:nth-child(even) {
         background-color: rgba(184, 177, 177, 0.716);
       }
-      td {
+      td,
+      th {
         padding: 10px 20px;
       }
       tr td:first-child {
@@ -27,52 +35,87 @@
       }
 
       section {
-        padding: 30px;
-        background-color: bisque;
-        width: 40%;
-        margin-bottom: 30px;
+        padding: 10px;
+        margin-bottom: 10px;
       }
       .input-add {
         padding: 10px;
       }
+      .container {
+        width: 60%;
+        margin: 0 auto;
+      }
+
+      .add-edit {
+        display: flex;
+        gap: 20px;
+      }
+      button {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 8px;
+        background-color: #1097eb;
+      }
+      td button:last-child {
+        background-color: #e72c2c;
+      }
+      input {
+        height: 25px;
+      }
+
+      .update {
+        display: none;
+      }
     </style>
   </head>
   <body>
-    <section>
-      <h3>Add new product</h3>
-      <input type="text" id="input-add" />
-      <button onclick="handleAdd()">Add</button>
-    </section>
-    <section>
-      <h3>Edit Product</h3>
-      <input type="text" id="product-index" disabled />
-      <br />
-      <input type="text" id="input-edit" />
-      <br /><br />
-      <button onclick="handleUpdate()">Update</button>
-    </section>
+    <div class="container">
+      <div class="add-edit">
+        <section>
+          <h3>Add new product</h3>
+          <input type="text" id="input-add" />
+          <input type="text" id="product-index-1" hidden />
+          <button onclick="handleAdd()" id="btn-add-edit">Add</button>
+        </section>
+        <section class="update">
+          <h3>Edit Product</h3>
+          <input type="text" id="product-index" hidden />
 
-    <section>
-      <h3>Search product</h3>
-      <br />
-      <input type="text" id="input-search" />
-      <br /><br />
-      <button onclick="handleSearch()">Search</button>
-    </section>
-    <table>
-      <tr>
-        <td>SP1</td>
-        <td><button>Edit</button> <button>Delete</button></td>
-      </tr>
-      <tr>
-        <td>SP1</td>
-        <td><button>Edit</button> <button>Delete</button></td>
-      </tr>
-      <tr>
-        <td>SP1</td>
-        <td><button>Edit</button> <button>Delete</button></td>
-      </tr>
-    </table>
+          <input type="text" id="input-edit" />
+          <button onclick="handleUpdate()">Update</button>
+        </section>
+      </div>
+      <div class="add-edit">
+        <section>
+          <h3>Search product</h3>
+          <br />
+          <input type="text" id="input-search" />
+
+          <button onclick="handleSearch()">Search</button>
+        </section>
+        <section>
+          <h3>Search product 2</h3>
+          <br />
+          <input type="text" id="input-search-2" />
+
+          <button onclick="handleSearch2()">Search</button>
+        </section>
+      </div>
+      <table>
+        <tr>
+          <td>SP1</td>
+          <td><button>Edit</button> <button>Delete</button></td>
+        </tr>
+        <tr>
+          <td>SP1</td>
+          <td><button>Edit</button> <button>Delete</button></td>
+        </tr>
+        <tr>
+          <td>SP1</td>
+          <td><button>Edit</button> <button>Delete</button></td>
+        </tr>
+      </table>
+    </div>
     <script src="./crud.js"></script>
   </body>
 </html>
