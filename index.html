@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session 18 - Object</title>
+  </head>
+  <body>
+    <a href="./class/bai-tap.html"><button>Bài tập Object</button></a>
+    <script>
+      /* use stric */
+      //Có 4 cách để khai báo/ khởi tạo 1 đối tượng
+      //Cách 1: object literal
+
+      const student = {
+        // Khai báo thuộc tính -- đặc điểm
+        studentCode: "SV001",
+        name: "Nguyễn Văn A",
+        age: 18,
+        address: "Cẩm Lệ - Đà Nẵng",
+        // Khai báo hành vi
+        study: function () {
+          return "Learn with Rikkei Academy";
+        },
+        play: function () {
+          return "Play guitar";
+        },
+      };
+      console.log("student 1", student);
+
+      //   Cách 2: Khai báo bằng constructor function
+      function Student(studentCode, name, age, address) {
+        // Khai báo thuộc tính -- đặc điểm
+        this.studentCode = studentCode;
+        this.name = name;
+        this.age = age;
+        this.address = address;
+        // Khai báo hành vi
+        this.study = function () {
+          return "Learn with Rikkei Academy";
+        };
+        this.play = function () {
+          return "Play guitar";
+        };
+      }
+
+      //   Tạo đối tượng student
+
+      const student_2 = new Student(
+        "SV002",
+        "Nguyễn Văn B",
+        20,
+        "Điện Bàn - Quảng Nam"
+      );
+      console.log("student 2", student_2);
+      console.log("student 2 study", student_2.study());
+
+      //   Cách 3: Object
+
+      const student_3 = new Object();
+      student_3.name = "Nguyễn Văn C";
+      student_3.age = 21;
+      console.log("student 3", student_3);
+
+      //   Cách 4: class
+
+      class Student_Class {
+        // Hàm khởi tạo --> khởi tạo các thuộc tính của đối tượng trong lần đầu
+        constructor(studentCode, name, age, address) {
+          // Khai báo thuộc tính -- đặc điểm
+          this.studentCode = studentCode;
+          this.name = name;
+          this.age = age;
+          this.address = address;
+        }
+
+        // Khai báo hành vi
+        study() {
+          return "Learn with Rikkei Academy";
+        }
+        play = function () {
+          return "Play guitar";
+        };
+      }
+
+      //   Khởi tạo student 4
+
+      const student_4 = new Student_Class(
+        "SV004",
+        "Nguyễn Văn D",
+        20,
+        "Hải Châu - Đà Nẵng"
+      );
+      student_4.studentCode = "sv008";
+      console.log("student_4", student_4.studentCode);
+
+      const student_5 = new Student(
+        "SV007",
+        "Nguyễn Văn F",
+        20,
+        "Điện Bàn - Quảng Nam"
+      );
+      console.log("student 5 ", student_5);
+      const student_6 = student_5;
+      student_6.age = 30;
+      student_6.gender = true;
+
+      console.log("student 5 after", student_5);
+
+      //   Cách copy object
+
+      // Cách 1: Dùng spread -- ES6
+      const student_7 = { ...student_5 };
+      student_7.name = "Hello world";
+
+      //   Cách 2: Dùng JSON
+      //  JSON.parse --> chuyển kiểu JSON về kiểu ban đầu của nó
+      // JSON.stringify  ---> Chuyển dữ liệu ban đầu thành kiểu JSON
+      const student_8 = JSON.parse(JSON.stringify(student_5));
+
+      // Cách 3: assign --> object --> gộp key
+
+      const student_9 = Object(student_5, {});
+      console.log("student 9", student_9);
+
+      //   Truy xuất dữ liệu và gán đối tượng
+      //   Cách 1: obj.key
+      student_9.name = "Nguyễn Văn N";
+      // Cách 2: obj["key"]
+      const keyName = "age";
+      student_8[keyName] = 60;
+      student_8.keyName = 70;
+
+      //   for in --> key của obj
+
+      for (const keyName in student_8) {
+        console.log(
+          "Kiểm tra key",
+          keyName,
+          " có giá trị là: ",
+          student_8[keyName]
+        );
+      }
+
+      const arr = [1, 4, 5, 7];
+      console.log("check arr", arr);
+
+      console.log("student 8", student_8);
+
+      //   delete key
+      // delete obj.key
+      delete student_8.address;
+
+      // cónst valueElement =   element.value --> valueElement.value = 10
+      const studentName = student_9.name;
+      studentName.name = "Nguyễn Văn M"; // sai hoàn toàn
+      //   gán lại giá trị của key khi và chỉ khi đó là Object
+
+      console.log("name stundent 9", student_9);
+
+      //   Cách 2: constructor function
+
+      function Product(id, name, price) {
+        // Khai bao thuoc tinh
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        // Khai bao hanh vi
+        this.getPrice = function () {
+          return this.price;
+        };
+        this.setPrice = function (value) {
+          {
+            this.price = value;
+          }
+        };
+      }
+
+      const samsungNote10 = new Product("SSN10", "Samsung Note 10", 12000000);
+      const price = samsungNote10.getPrice();
+      samsungNote10.setPrice(1000000);
+
+      console.log("Kiểm tra price", price, samsungNote10);
+
+      //
+    </script>
+  </body>
+</html>
