@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/form.css" />
+  </head>
+  <body>
+    <div id="form">
+      <h2>Form đăng ký</h2>
+      <div class="form-input">
+        <label for="email">Email</label>
+        <input type="text" placeholder="Fill a email" id="email" />
+      </div>
+      <div class="form-input">
+        <label for="user-name">User name</label>
+        <input type="text" placeholder="Fill your user name" id="user-name" />
+      </div>
+      <div class="form-input">
+        <label for="password">Password</label>
+        <input type="password" id="password" />
+      </div>
+      <div class="form-input">
+        <label for="repeat-password">Repeat password</label>
+        <input type="password" id="repeat-password" />
+      </div>
+      <button onclick="handleRegister()">Register</button>
+    </div>
+
+    <div id="form">
+      <h3>Form đăng nhập</h3>
+      <div class="form-input">
+        <label for="email-login">Email</label>
+        <input type="text" placeholder="Fill a email" id="email-login" />
+      </div>
+      <div class="form-input">
+        <label for="password-login">Password</label>
+        <input type="password" id="password-login" />
+      </div>
+      <button onclick="handleLogin()">Login</button>
+    </div>
+    <script src="./regester.js"></script>
+    <script>
+      //       const account = [
+      //         { email: "a@gmail.com" },
+      //         { email: "b@gmail.com" },
+      //         { email: "c@gmail.com" },
+      //         { email: "d@gmail.com" },
+      //       ];
+      //       const email = "com";
+      // let isExist = false
+      //       for (let index = 0; index < account.length; index++) {
+      //         const element = account[index];
+      //         if (email === element.email) {
+      //           console.log(element.email, index);
+      //           break
+      //         }
+      //       }
+
+      //       //   dùng forEach
+
+      //       account.forEach((item, i) => {
+      //         if (item.email === email) {
+      //           console.log("Hello", item);
+      //           isExist = true
+      //         }
+      //       });
+    </script>
+  </body>
+</html>

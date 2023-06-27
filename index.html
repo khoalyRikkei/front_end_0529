@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const person = {
+        name: "Nguyen Van A",
+        age: 18,
+        address: "DN",
+        doB: "12-10-2005",
+        gender: "0",
+      };
+
+      //key: viết in thường, viết liền (giống biến)
+      //   value: string, number, array, function, object
+
+      //   Cách 1:
+      person.name;
+      // Cách 2:
+
+      const a = "name";
+      person[a];
+      person.key;
+
+      console.log("kiểm tra đối tượng", person);
+      console.log("Kiểm tra tên đối tượng", person.name);
+      console.log("Cách 2 kiểm tra tên đối tượng");
+
+      //   Dùng for in để lấy từng key của object
+
+      for (const key in person) {
+        console.log("check key", key);
+        console.log("check value key", person[key]); //khi muốn lấy giá trị theo tên thuộc tính --> tên thuộc tính là 1 biến
+      }
+
+      //   Object là kiểu dữ liệu tham chiếu
+
+      const person2 = person;
+
+      person2.name = "nguyễn Văn B";
+
+      console.log(person2, person);
+
+      //   spread --> copy nội dung của object, array
+
+      const person3 = { ...person };
+      console.log("check person 3", person3);
+
+      person3.name = "Nguyễn Văn C";
+
+      console.log("check person 3 lần 2", person3);
+      console.log("check person 1 lần 2", person);
+
+      const number = [1, 2, 4, 5, 6];
+      const number2 = [...number];
+      number2[1] = 100;
+      console.log(number, number2);
+
+      const animals = [
+        { id: 1, name: "kitty", weight: 2, gender: true, type: "cat" },
+        { id: 2, name: "cún con", weight: 5, gender: false, type: "dog" },
+      ];
+
+      const cat = animals[0];
+      console.log(11111, animals);
+      cat.name = "hello Kitty";
+      const animals2 = [...animals];
+
+      const cat2 = animals2[1];
+      animals2[1].type = "cat";
+      console.log(animals, animals2);
+
+      //   Dùng JSON
+      const animals3 = JSON.parse(JSON.stringify(animals));
+      animals3[1].name = "Big dog";
+      console.log(animals, animals3);
+    </script>
+  </body>
+</html>
