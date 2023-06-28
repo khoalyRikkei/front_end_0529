@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session 19 - Object</title>
+  </head>
+  <body>
+    <a href="./class/bai-tap.html"><button>Bài tập Object</button></a>
+    <script>
+      class Car {
+        // Xây dựng các thuộc tính
+        constructor(name, speed, weight, color) {
+          this.name = name;
+          this.speed = speed;
+          this.weight = weight;
+          this.isRun = false;
+          this.color = color;
+        }
+
+        // Xây dựng các phương thức
+
+        start() {
+          this.isRun = true;
+        }
+        stop() {
+          this.isRun = false;
+        }
+        getColor = () => this.color; // getColor = () => { return(this.color)}
+        getSpeed = () => this.speed;
+        getInfo = () => ({
+          // retunr arrow function là một object => không phân biệt được obj với khối lệnh js
+          name: this.name,
+          weight: this.weight,
+          color: this.color,
+          speed: this.speed,
+        });
+        setColor = (color) => {
+          this.color = color;
+        };
+      }
+
+      const car_1 = new Car("myCar", 250, 2000, "red");
+
+      console.log("Kiểm tra thông tin xe", car_1.getInfo());
+
+      //   Kiểm tra một số đối tượng, phương thức có sẵn trong JS
+
+      // Array() , Object() , String(), Date()
+
+      const today = new Date();
+
+      console.log("Kiểm tra today", today);
+
+      //   Phương thức lấy ngày
+      const day = today.getDate();
+
+      //   Phương thức lấy tháng
+      const month = today.getMonth(); // tính từ 0  -> 11
+
+      //   Phương thức để lấy năm
+      const year = today.getFullYear();
+
+      //   Lấy được giờ, lấy được phút , lấy được giây tương ứng --> getHour(), getMinus(), getSecond()
+
+      // Muốn lấy ngày tháng năm
+
+      const formatToday = today.toLocaleDateString("en-GB");
+
+      //   Lấy thời gian chính xác
+
+      const time = today.toLocaleTimeString();
+      console.log("Ngày hôm nay là:", day);
+      console.log("Tháng này là:", month);
+      console.log("Năm này là:", year);
+
+      console.log("Format ngày tháng năm", formatToday);
+      console.log("Format thời gian", time);
+
+      //   Một số phương thức khác
+
+      const number = 10.7;
+      Math.random(); // kết quả số thập phân từ 0 -> bé hơn 1
+      Math.sqrt(number); // Căn bậc 2
+      Math.floor(number); //Làm tròn xuống --- parseInt()
+      Math.round(number); // Làm tròn thông thường
+      Math.pow(); // Số mũ
+      Math.ceil(4.1); // Làm tròn lên
+
+      console.log(Math.ceil(4.1));
+    </script>
+  </body>
+</html>

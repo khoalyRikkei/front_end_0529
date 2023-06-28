@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài tâp Objec</title>
+    <style>
+      table,
+      tr,
+      td,
+      th {
+        border: 1px solid;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <fieldset>
+      <legend>Bài 1</legend>
+      <h3>Xây dựng câu chuyện Adam và Eva</h3>
+      <table cellpadding="10">
+        <caption>
+          HUMAN
+        </caption>
+        <tr>
+          <th></th>
+          <th>Tên</th>
+          <th>Kiểu dữ liệu</th>
+        </tr>
+        <tr>
+          <td rowspan="3">thuộc tính</td>
+          <td>name</td>
+          <td>String</td>
+        </tr>
+        <tr>
+          <td>weight</td>
+          <td>number</td>
+        </tr>
+        <tr>
+          <td>gender</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td rowspan="4">Hành vi</td>
+          <td>eat=(food)=> { }</td>
+          <td>Phải biết ăn gì???</td>
+        </tr>
+      </table>
+
+      <table cellpadding="10">
+        <caption>
+          FOOD
+        </caption>
+        <tr>
+          <th></th>
+          <th>Tên</th>
+          <th>Kiểu dữ liệu</th>
+        </tr>
+        <tr>
+          <td rowspan="2">thuộc tính</td>
+          <td>name</td>
+          <td>String</td>
+        </tr>
+        <tr>
+          <td>weight</td>
+          <td>number</td>
+        </tr>
+        <tr>
+          <td rowspan="2">Hành vi</td>
+          <td>getWeigth()</td>
+          <td>Kiểm tra khối lượng thức ăn</td>
+        </tr>
+        <tr>
+          <td>decrease()</td>
+          <td>-- Giảm khối lượng thức ăn xuống 1 đơn vị</td>
+        </tr>
+      </table>
+    </fieldset>
+    <button onclick="handleEat()">Eat Apple của Adam</button>
+
+    <fieldset>
+      <legend>Bài 1</legend>
+      <h3>Student</h3>
+      <table cellpadding="10">
+        <caption>
+          Student
+        </caption>
+        <tr>
+          <th></th>
+          <th>Tên</th>
+          <th>Kiểu dữ liệu</th>
+        </tr>
+        <tr>
+          <td rowspan="5">thuộc tính</td>
+          <td>name</td>
+          <td>String</td>
+        </tr>
+        <tr>
+          <td>age</td>
+          <td>number</td>
+        </tr>
+        <tr>
+          <td>gender</td>
+          <td>boolean</td>
+        </tr>
+        <tr>
+          <td>Địa chỉ</td>
+          <td>String</td>
+        </tr>
+        <tr>
+          <td>Số điện thoại</td>
+          <td>String</td>
+        </tr>
+      </table>
+    </fieldset>
+    <script>
+      // Xây dựng mô hình đối tượng
+
+      function Human(name, weight, gender) {
+        // Khai báo thuộc tính
+        this.name = name;
+        this.weight = weight; // kg
+        this.gender = gender;
+
+        // Khai báo hành vi
+        this.eat = (food) => {
+          if (food.getWeight() > 0) {
+            //1: ảnh hưởng quả táo
+            food.decrease();
+            //   2: ảnh hưởng người ăn
+            this.increase(); // khối lượng người ăn sẽ tăng lên
+          } else {
+            console.log("Quả táo này đã hết rồi");
+          }
+        };
+        this.getInfo = () => ({
+          name: this.name,
+          weight: this.weight,
+          gender: this.gender,
+        });
+        this.increase = () => {
+          this.weight = Number((this.weight + 0.1).toFixed(1));
+        };
+      }
+
+      class Food {
+        constructor(name, weight) {
+          this.name = name;
+          this.weight = weight; //don vi kg
+        }
+        getWeight = () => this.weight;
+        decrease = () => {
+          this.weight = Number((this.weight - 0.1).toFixed(1));
+        };
+      }
+
+      //   Khai báo và khởi tạo 1 đối tượng cụ thể
+
+      const adam = new Human("Adam", 70, true);
+      const apple = new Food("Apple", 0.3);
+
+      console.log("thông tin của adam", adam.getInfo());
+
+      function handleEat() {
+        adam.eat(apple);
+        console.log("Sau khi ăn táo thì Adam có thông tin", adam);
+        console.log("Sau khi ăn táo thì táo còn", apple);
+      }
+
+      function Array_2() {
+        this.find = (status) => {};
+      }
+    </script>
+  </body>
+</html>
