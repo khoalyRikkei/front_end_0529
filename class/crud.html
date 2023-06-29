@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài tập 4 - CRUD - session 19 - Object</title>
+  </head>
+  <body>
+    <button onclick="inputData()">Click để nhập</button>
+
+    <script>
+      const courses = [
+        new Course("JavaScript", false),
+        new Course("ReactJS", false),
+      ]; // ngoài global
+
+      // Người dùng nhập thông tin vào
+      function inputData() {
+        let stopLoop = false;
+
+        while (stopLoop === false) {
+          const type = prompt(
+            "Nhập C, R, U, D hoặc E để thêm , đọc , sửa , xóa dữ liệu"
+          );
+          if (type === "C") {
+            // function create
+            createCourse();
+          } else if (type === "U") {
+            // function update
+            updateCourse();
+          } else if (type === "R") {
+            // Function read
+            readCourses();
+          } else if (type === "D") {
+            // Function delete
+            deleteCourse();
+          } else if (type === "E") {
+            // Function vòng lặp
+            stopLoop = true;
+            alert("Cảm ơn bạn đã đến với Rikkei Academy");
+          } else {
+            alert("nhập sai, vui lòng nhập lại C/R/U/D");
+          }
+          // createCourse()
+        }
+      }
+      // create
+      function createCourse() {
+        // Nhập thông tin
+        const courseName = prompt("Nhập tên môn học");
+        const courseStatus = prompt(
+          "Nhập trạng thái môn học (true hoặc false)",
+          true
+        );
+
+        const convertBoolean = courseStatus === "true" ? true : false;
+        // Validate dữ liệu --> tên môn học không được trùng
+
+        // Tạo một khóa học mới
+        const newCourse = new Course(courseName, convertBoolean);
+
+        // Thêm dữ liệu vào database
+
+        courses.push(newCourse);
+
+        // console.log("kiểm tra dataBase", courses);
+        readCourses();
+      }
+
+      //   read
+      function readCourses() {
+        courses.forEach((course) =>
+          console.log(
+            "Tên khóa học:" + course.name + " và trạng thái: " + course.status
+          )
+        );
+      }
+
+      //   Update
+      function updateCourse() {
+        const position = Number(prompt("Vui lòng nhập vị trí muốn sửa")); //thực tế bắt đầu từ 1 ==> index -1
+
+        const index = position - 1;
+
+        if (index < 0 || index >= courses.length) {
+          alert("Vị trí " + position + " không tồn tại! Vui lòng nhập lại");
+          return;
+        }
+
+        const courseName = prompt("Nhập tên môn học mới");
+        const courseStatus = prompt(
+          "Nhập trạng thái môn học mới (true hoặc false)",
+          true
+        );
+
+        const convertBoolean = courseStatus === "true" ? true : false;
+
+        const newCourse = new Course(courseName, convertBoolean);
+
+        for (let i = 0; i < courses.length; i++) {
+          if (i === index) {
+            courses.splice(index, 1, newCourse);
+            break;
+          }
+        }
+
+        // In ra kết quả
+        readCourses();
+      }
+
+      //   Delete
+      function deleteCourse() {
+        const position = Number(prompt("Vui lòng nhập vị trí muốn xóa")); //thực tế bắt đầu từ 1 ==> index -1
+
+        const index = position - 1;
+
+        if (index < 0 || index >= courses.length) {
+          alert("Vị trí " + position + " không tồn tại! Vui lòng nhập lại");
+          return;
+        }
+        // Lặp qua phần tử và xóa
+        for (let i = 0; i < courses.length; i++) {
+          if (i === index) {
+            courses.splice(index, 1);
+            break;
+          }
+        }
+
+        // In ra kết quả
+        readCourses();
+      }
+
+      //   Tạo tạo mô hình 1 môn học
+
+      function Course(name, status) {
+        this.name = name;
+        this.status = status;
+      }
+    </script>
+  </body>
+</html>

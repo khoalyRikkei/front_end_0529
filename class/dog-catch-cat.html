@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Animal(name, speed) {
+        this.name = name;
+        this.speed = speed;
+        this.catch = (animal) => {
+          if (this.speed > animal.speed) {
+            console.log(this.name + " có khả năng bắt " + animal.name);
+          } else {
+            console.log(
+              this.name + "không bắt được " + animal.name + " do chạy quá nhanh"
+            );
+          }
+        };
+        this.getSpeed = () => this.speed;
+        this.setSpeed = (value) => {
+          this.speed = value;
+        };
+      }
+
+      const dog = new Animal("Dog", 20);
+      const cat = new Animal("cat", 15);
+      dog.catch(cat);
+    </script>
+  </body>
+</html>

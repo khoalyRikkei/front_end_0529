@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="addData()">ADD PRODUCTS</button>
+    <button onclick="deleteData()">DELETE PRODUCTS</button>
+    <button onclick="updateData()">UPDATE PRODUCTS</button>
+    <button onclick="findData()">FIND PRODUCTS</button>
+
+    <script>
+      let products = [
+        { id: 1, name: "Milk", count: 100 },
+        { id: 2, name: "Yakult", count: 100 },
+        { id: 3, name: "Butter", count: 100 },
+      ];
+      let data = {
+        id: 4,
+        name: "Vinamilk",
+        count: 200,
+      };
+      function addData() {
+        products.push(data);
+        console.log(products);
+      }
+      function deleteData() {
+        let index = 0;
+        // tạo biến tạm để nhận index
+        for (let i = 0; i < products.length; i++) {
+          // kieerm tra xem thằng id = 2
+          if (products[i].id == 2) {
+            index = i;
+            break;
+          }
+        }
+        products.splice(index, 1);
+        console.log(products);
+      }
+
+      function updateData() {
+        products.map((item) => {
+          if (item.id == 3) {
+            item.count = 0;
+          }
+        });
+        console.log(products);
+      }
+
+      function findData() {
+        let findData = products.find((item) => {
+          return item.name == "Butter";
+        });
+        console.log(findData);
+      }
+    </script>
+  </body>
+</html>
