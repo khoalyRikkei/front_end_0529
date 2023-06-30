@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>S21- DOm _EVENT</title>
+  </head>
+  <body>
+    <button onclick="handleChangeTitle()">Change title</button>
+    <table></table>
+
+    <section>
+      <h3>Phần tử cần gỡ bỏ</h3>
+      <h3 class="remove">Phần tử cần thay thế</h3>
+    </section>
+    <script>
+      const tableElement = document.querySelector("table");
+      const trElement = document.createElement("tr"); // Tạo thẻ
+
+      console.log(trElement);
+      //   tr thêm vào table
+
+      //   tạo td
+
+      const tdElement = document.createElement("td");
+      tdElement.innerHTML = "Đà Nẵng";
+      trElement.appendChild(tdElement);
+
+      // appendChild()
+
+      tableElement.appendChild(trElement);
+      console.log("kiểm tra table", tableElement);
+
+      //   Gỡ bỏ phần tử h3
+      const h3Element = document.querySelector("section h3");
+      const sectionElement = document.querySelector("section");
+
+      sectionElement.removeChild(h3Element);
+
+      //   Thay thế element
+      const pElement = document.createElement("p");
+      pElement.innerHTML = "Xin chào tháng 7";
+
+      const h3Element_2 = document.querySelector(".remove");
+      sectionElement.replaceChild(pElement, h3Element_2);
+
+      function handleChangeTitle() {
+        const newTitle = prompt("Nhập title");
+        document.title = newTitle;
+      }
+
+      //   Bài tập: tạo 1 hình ảnh mới được nhập từ người dùng (người dùng sẽ nhập url)
+
+      // B1: Có nơi chứa ảnh (element)
+      // B2: Lấy link ảnh
+      // B3: Tạo 1 thẻ img mới
+      // B4: gán src của img mới == link ảnh mới nhập
+      // b5: Thêm vào nơi chứa ảnh (element)
+    </script>
+  </body>
+</html>
