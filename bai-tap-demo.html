@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo</title>
+  </head>
+  <body>
+    <fieldset>
+      <legend>Bài 1</legend>
+      <h3>Thay đổi thông tin sinh viên</h3>
+      <button onclick="asm_01()">Click để thay đổi</button>
+    </fieldset>
+    <fieldset>
+      <legend>Bài 2</legend>
+      <h3>Hàm tính tổng</h3>
+      <button onclick="asm_02()">Click để tính</button>
+    </fieldset>
+    <fieldset>
+      <legend>Bài 3</legend>
+      <h3>Tạo mã code</h3>
+      <button onclick="asm_03()">Click để tạo</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Bài 4</legend>
+      <h3>Tạo store</h3>
+      <button onclick="asm_04()">Click để tạo</button>
+    </fieldset>
+    <script>
+      // Có mảng sinh viên
+
+      const students = [
+        {
+          id: "SV1",
+          name: "Nguyên Văn A",
+          address: "ĐN",
+          gender: true,
+          class: "RA_01",
+        },
+        {
+          id: "SV2",
+          name: "Nguyên Văn B",
+          address: "ĐN",
+          gender: true,
+          class: "RA_01",
+        },
+        {
+          id: "SV3",
+          name: "Nguyên Văn C",
+          address: "ĐN",
+          gender: true,
+          class: "RA_01",
+        },
+        {
+          id: "SV4",
+          name: "Nguyên Văn D",
+          address: "ĐN",
+          gender: true,
+          class: "RA_01",
+        },
+        {
+          id: "SV5",
+          name: "Nguyên Văn E",
+          address: "ĐN",
+          gender: true,
+          class: "RA_01",
+        },
+      ];
+
+      //Bài 1:   Đổi thông tin địa chỉ của sinh viên : SV03 --> Cần Thơ và class --> RA_02
+
+      //Bài 2:  Viết hàm tính tổng của 3 số , tính tổng 5 số , n số
+
+      //Bài 3: Viết chương trình chuyển đổi tạo mã đơn hàng.
+      // Ví dụ converCode(1,4,5,6) ---> Mã đơn hàng [{code: "SP_1"}, {code: "SP_4"}, {code: "SP_5"},{code: "SP_6"}]
+      function asm_01() {
+        // Lặp qua từng phần tử để tìm sinh viên theo điều kiện
+
+        for (let i = 0; i < students.length; i++) {
+          if (students[i].id === "SV3") {
+            // students[i].address = "Cần Thơ";
+
+            const newInfo = {
+              class: "RA_02",
+              address: "Cần Thơ",
+            };
+            // Sử dụng tóan tử spread
+            const newStudent = { ...students[i], ...newInfo }; // ...student[i] = id: "SV03", name: ....
+
+            // Cập nhật lại dữ liệu
+            students.splice(i, 1, newStudent);
+            break;
+          }
+        }
+        console.log("Kiểm tra students", students);
+      }
+      // Bài 4: Viết chương trình tạo store bằng cách thêm vào tên sản phẩm --> Chuyển đổi thành mảng chứa 1 đối tượng sản phẩm có id, name, quantity
+      //   createStore('samsung', 'apple', 'xiaomi') --> [{id: "SP_1", name: "samsung", quantity: 20}, {id: "SP_2", name: "apple", quantity: 20}, {id: "SP_3", name: "xiaomi", quantity: 20}]
+      function asm_02() {
+        // spread
+        function sum(...numbers) {
+          let sum = 0;
+          numbers.forEach((number) => {
+            sum += number;
+          });
+          return sum;
+        }
+
+        const sumNumber = sum(1, 4, 5, 345, 345, 64, 45);
+
+        console.log("Kết quả sum", sumNumber);
+      }
+
+      function asm_03() {
+        // spread
+        function convertCode(...numbers) {
+          const products = [];
+          numbers.forEach((number) => {
+            const code = "SP_" + number;
+            const codeObj = { code: code };
+            // Push đối tượng vào mảng
+            products.push(codeObj);
+          });
+          return products;
+        }
+        const covertCode_1 = convertCode(1, 4, 5, 345, 345, 64, 45);
+        console.log("Kết quả code", covertCode_1);
+      }
+
+      function asm_04() {
+        // spread
+        function createStore(...products) {
+          const store = [];
+          //   lặp qua sản phẩm để tạo thông tin của sp đó
+          products.forEach((product, index) => {
+            const newProduct = {
+              // Cộng số trước khi cộng mã bằng chữ
+              id: "SP_" + (index + 1),
+              name: product,
+              quantity: 20,
+            };
+            // Đưa vào store
+            store.push(newProduct);
+          });
+          console.log("Store", store);
+        }
+
+        createStore(
+          "Iphone 14",
+          "Iphone 13",
+          "IPhone 12",
+          "IPhone 10",
+          "Macbook Pro"
+        );
+      }
+      //   spread
+
+      const dogs = ["Kiki", "Lu", "Pull"];
+      const cats = ["Kitty", "Chó", "Mum", "Goo", "Meo"];
+
+      const pets = [...dogs, ...cats]; //dogs.concat(cats)
+      console.log("Kiểm tra pet", pets);
+      //   Lấy 3 chó và bỏ 2 mèo đầu
+      //   Destructuring kết hợp với rest
+
+      const [a, b, ...otherCat] = cats;
+      const pets_2 = [...dogs, ...otherCat];
+      console.log("Kiểm tra pets 2", pets_2);
+    </script>
+  </body>
+</html>

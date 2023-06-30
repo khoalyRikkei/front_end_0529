@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài tập</title>
+  </head>
+  <body>
+    <script>
+      const data = [
+        ["a", "b"],
+        ["c", "d", "e"],
+        ["f", "n", "m"],
+      ];
+
+      const newData = data.reduce((pre, item) => pre.concat(item), []);
+
+      const newData2 = data.reduce((pre, item) => [...pre, ...item], []);
+
+      console.log("Kiểm tra data", newData, newData2);
+    </script>
+  </body>
+</html>

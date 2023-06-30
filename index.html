@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session 20 - ES6</title>
+  </head>
+  <body>
+    <header><h1>Session 20 - ES6</h1></header>
+    <fieldset>
+      <legend>Spread</legend>
+      <h3>Copy các phần tử trong array hoặc object</h3>
+      <button onclick="getSpread()">Click</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Rest</legend>
+      <h3>Lấy phần tử còn lại trong array hoặc object</h3>
+      <button onclick="getRest()">Click</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Destructuring</legend>
+      <h3>Lấy một phần tử trong mảng hoặc key trong object</h3>
+      <button onclick="getDestructuring()">Click</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Class</legend>
+      <h3>Ví dụ</h3>
+      <button onclick="getClass()">Click</button>
+    </fieldset>
+
+    <button onclick="handleClick()">Click</button>
+
+    <script>
+      // Tham số mặc định
+      function sum(a, b = 0) {
+        // khi b không được truyền vào khi gọi gọi hàm hoặc b bằng undefinded
+        return a + b;
+      }
+
+      const sumNuumber = sum(1);
+      console.log("Kiểm tra sumNumber", sumNuumber);
+
+      function renderData(data = []) {
+        data.forEach((element) => {
+          console.log("Element", element);
+        });
+      }
+      renderData();
+      function getSpread() {
+        const number = [1, 4, 5, 7];
+        // spread --> copy lại nội dung mảng hoặc object
+        number2 = [...number]; // bọc lại array hoặc objec tương ứng
+        number2[1] = 1000;
+
+        console.log("number", number, "number2", number2);
+      }
+
+      function getRest() {
+        // rest --> lấy phần còn lại
+
+        function sumData(a, b, ...other) {
+          // arguments
+          console.log("Kiểm tra a", a);
+          console.log("Kiểm tra b", b);
+          console.log("other", other);
+        }
+
+        sumData(1, 3, 5, 6, 7, 8686, 87686, 768);
+
+        function sumNumbers(...data) {
+          let sum = 0;
+          for (let index = 0; index < data.length; index++) {
+            const number = data[index];
+            // cộng từng phần tử vào sum
+            sum += number;
+          }
+          return sum;
+        }
+
+        //
+        const sum_1 = sumNumbers(1, 2);
+        const sum_2 = sumNumbers(1, 3, 4, 6, 7);
+
+        console.log("Kết quả sum_1", sum_1);
+        console.log("Kết quả sum_2", sum_2);
+
+        // Kết hợp giữ destructuring và rest
+        function getStudent({ id, name, ...other }) {
+          console.log(id, name, other);
+        }
+        const student = {
+          id: 1,
+          name: "Nguyễn Văn A",
+          age: 18,
+          address: "ĐN",
+          gender: true,
+        };
+        const student2 = {
+          id: 1,
+          name: "Nguyễn Văn B",
+          age: 18,
+          address: "ĐN",
+          gender: true,
+        };
+        getStudent(student, student2);
+        ge;
+      }
+
+      function getDestructuring() {
+        const student = { id: 1, name: "Nguyễn Văn A", age: 18, address: "ĐN" };
+
+        const nameStudent = student.name;
+        const ageStudent = student.age;
+        const { address, id } = student;
+
+        console.log("student", nameStudent, ageStudent, address, id);
+
+        const animal = ["dog", "cat", "pig"];
+        const [a, b, c] = animal;
+      }
+
+      // Arrow function  ---> return 1 kết quả mà không thực thi khối lệnh trước đó
+
+      const sum_1 = (a, b) => a + b;
+
+      // Cấu trúc tương tự
+
+      const sum_2 = (a, b) => {
+        // Khối lệnh thực thi
+
+        // return
+        return a + b;
+      };
+
+      // Khi trả về đối tượng và return rút gọn
+
+      const converData = (name, age) => ({ name: name, age: age });
+
+      // Cách 2
+
+      const converData_2 = (name, age) => {
+        return { name: name, age: age };
+      };
+
+      // Cách 3
+      const converData_3 = (name, age) => ({ name, age });
+
+      // Arrow function không có this
+
+      // Class
+
+      function getClass() {
+        class Person {
+          constructor(name, age, gender, hobby) {
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+            this.hobby = hobby;
+          }
+          getInfo = () => ({
+            name: this.name,
+            age: this.age,
+            gender: this.gender,
+            hobby: this.hobby,
+          });
+        }
+
+        class User extends Person {
+          constructor(email, password, name, age, gender, hobby) {
+            super(name, age, gender, hobby);
+            this.email = email;
+            this.password = password;
+          }
+
+          getAccount = () => ({ email: this.email, password: this.password });
+        }
+
+        const person = new Person("Nguyễn Văn A", 20, true, "game");
+        const user = new User(
+          "b@gmail.com",
+          "1234",
+          "Nguyễn Văn B",
+          21,
+          false,
+          "guitar"
+        );
+
+        console.log("Kiểm tra person", person);
+        console.log("Kiểm tra user", user.getInfo());
+      }
+
+      // Tạo 2 mô hình đối tượng Animal có thuộc tính weight, speed, food, type , Pet có thuộc tính kế thừa từ Animal và có thêm thuộc tín name, hobby
+    </script>
+
+    <script type="module">
+      // Khi import --> object --> name trùng với name khai báo bên export
+      import { students } from "./dataBase.js";
+      import dataBase from "./dataBase.js";
+
+      function handleClick() {
+        alert("Hello world");
+      }
+      window.handleClick = handleClick;
+
+      console.log("Kiểm tra student", students);
+      console.log("Kiểm tra data", dataBase);
+
+      const arr = [];
+      const arr2 = [...arr];
+
+      console.log(11111111111, arr2);
+    </script>
+  </body>
+</html>
