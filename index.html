@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session 21 - DOM & Event</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      /* ul {
+        list-style-type: none;
+      } */
+      .item-li {
+        padding: 10px;
+        font-weight: 700;
+      }
+      .item-li:hover {
+        background-color: orange;
+        color: white;
+      }
+
+      .text-red {
+        color: red;
+      }
+      a {
+        color: inherit;
+      }
+
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Session 21 - DOM and EVENT</h1>
+      <nav>
+        <ul>
+          <li class="text-red"><a href="/">Home</a></li>
+          <li class="text-red"><a href="#">About</a></li>
+          <li><a href="#">Product</a></li>
+          <li><a href="#">News</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="part-1" class="item">
+        <h3>DOM</h3>
+        <p>Hello JavaScript</p>
+        <p>Rikkei Academy</p>
+        <p>Hello JS230529</p>
+      </section>
+      <section id="part-2" class="item">
+        <h3>Event</h3>
+        <p>Hello JavaScript 2</p>
+        <p>Rikkei Academy 2</p>
+        <p>Hello JS230529 2</p>
+      </section>
+      <section id="part-3">
+        <h3>Ví dụ</h3>
+      </section>
+      <section>
+        <h3>Danh sách học sinh</h3>
+        <ul>
+          <li dataAtt="2222">Nguyễn Văn A</li>
+          <li>Nguyễn Văn B</li>
+          <li>Nguyễn Văn C</li>
+          <li>Nguyễn Văn D</li>
+          <li>Nguyễn Văn E</li>
+        </ul>
+      </section>
+
+      <button onclick="handleToggle()">Toggle</button>
+      <div class="box" id="box-toggle"></div>
+    </main>
+
+    <script>
+      // Cách 1: Truy vấn tới id
+      const sectionPart_1Element = document.getElementById("part-1");
+      console.log("Kiểm tra element part 1", sectionPart_1Element);
+
+      //   Cách 2: Truy vấn tới tag name
+
+      const sectionTagName = document.getElementsByTagName("section");
+      console.log("Kiểm tra section", sectionTagName);
+      const h3Section = sectionPart_1Element.getElementsByTagName("h3");
+      console.log("Kiểm tra h3", h3Section);
+
+      //   Cách 3: Truy vấn tới class name
+
+      const itemClassName = document.getElementsByClassName("item");
+      console.log("Kiểm tra item", itemClassName);
+
+      //   for để lặp qua từng phần tử
+
+      for (let i = 0; i < itemClassName.length; i++) {
+        console.log("kiểm class thứ ", i, itemClassName[i]);
+      }
+
+      //   Cách 4: Truy vấn bằng querySelector --> id, class, tagname
+      const sectionEvent = document.querySelector(".item");
+      console.log("Kiểm tra thông tin section event", sectionEvent);
+
+      //   Cách 5: dùng querySelectorAll truy vấn toàn bộ
+
+      const pElements = document.querySelectorAll("#part-1 p");
+
+      console.log("Kiểm tra p trong section", pElements);
+
+      pElements.forEach((element) => {
+        console.log("Các thẻ p", element);
+      });
+
+      //   Bài tập 1: Truy vấn tới từng thẻ li bằng cách khác nhau
+      //   Bài tập 2: Truy vấn toàn bộ thẻ li trong nav
+
+      //   Truy vấn tới các thẻ li
+
+      const ul = document.querySelector("nav ul");
+      const liElements = document.querySelectorAll("nav li");
+      console.log(liElements);
+
+      //   Thay đổi css ul
+
+      ul.style.display = "flex";
+      ul.style.listStyleType = "none";
+      ul.style.justifyContent = "space-between";
+
+      //   Thêm class vào trong từng thẻ li
+
+      liElements.forEach((li) => {
+        li.classList.add("item-li");
+        li.setAttribute("data", "JS230529");
+        li.setAttribute("onclick", "handleClick()"); //set thuộc tính mới hoặc set function(onchange, onclick,...)
+        console.log(li.getAttribute("data"));
+
+        console.log("Kiểm tra classList", li.classList);
+        // classList - add(), remove(), toggle()
+      });
+
+      //   Dùng getAttribute muốn lấy thông tin các thuộc tính đã setAttribute
+
+      //   HandleClick
+
+      function handleClick() {
+        alert("Hello world");
+      }
+
+      function handleToggle() {
+        const boxElement = document.querySelector("#box-toggle");
+        boxElement.classList.toggle("box");
+      }
+      //   Lấy thuộc tính
+    </script>
+  </body>
+</html>
