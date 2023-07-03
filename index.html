@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session 22</title>
+    <style>
+      fieldset button {
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Storing data in the browser</h1>
+    </header>
+    <fieldset>
+      <legend>Bài 1</legend>
+      <h3>Ví dụ localStorage</h3>
+      <button onclick="bai_01()">Click</button>
+      <button onclick="getUserAccount()">Lấy dữ liệu về</button>
+      <button onclick="deleteData()">Xóa dữ liệu trên localStorage</button>
+      <button onclick="deleteAllData()">
+        Xóa tất dữ liệu trên localStorage
+      </button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Bài 2</legend>
+      <h3>Ví dụ sessionStorage</h3>
+      <button onclick="bai_02()">Click sessionStorage</button>
+      <button onclick="getDataSession()">Lấy dữ liệu về sessionStorage</button>
+      <button onclick="deleteDataSession()">
+        Xóa dữ liệu trên sessionStorage
+      </button>
+      <button onclick="deleteAllDataSession()">
+        Xóa tất dữ liệu trên sessionStorage
+      </button>
+
+      <br />
+    </fieldset>
+
+    <fieldset>
+      <legend>Bài 3</legend>
+      <h3>Ví dụ session</h3>
+      <input type="text" placeholder="Nhập vào user" id="input-03" />
+      <button onclick="bai_03_add_username()">Thêm user</button>
+      <button onclick="bai_03_delete_username()">Xóa user</button>
+      <p id="result-03">Minh</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Bài 4</legend>
+      <h3>Ví dụ về cookie</h3>
+      <button onclick="bai_04_get_cookie()">lấy thông tin cookie</button>
+      <button onclick="bai_04_set_cookie()">set thông tin cookie</button>
+    </fieldset>
+  </body>
+
+  <script>
+    // Local Storage --> xóa bằng thao tác trên trình duyệt hoặc js
+
+    // session Storage --> Xóa bằng thao tác trên trình duyệt, js và khi đóng trình duyệt
+
+    // lấy dữ liệu về --> localStorage.getItem(key): ---> kiểu dữ liệu là JSON --> kết hợp với JSON.parse()
+
+    //đưa dữ liệu lên localStorage --> localStorage.setItem(key, value) --> value --> JSON --> JSON.stringify(value)
+
+    // localStorage.removeItem(key): xóa dữ liệu theo key
+    // localStorage.clear(): Xóa toàn bộ dữ liệu trong localStorage
+
+    // Bài tập làm việc với localStorage
+
+    // Lấy dữ liệu từ localStorage xuống:
+
+    const user = localStorage.getItem("userLogin");
+    const userParse = JSON.parse(user);
+    console.log("Kiểm tra user", user);
+    console.log("Kiểm tra user", userParse);
+
+    const userLogin = {
+      email: "khoaly@rikkeisoft.com",
+      isAdmin: false,
+      username: "Khoa đẹp trai",
+    };
+    const userConvertJSON = JSON.stringify(userLogin);
+
+    // Đưa dữ liệu lên localStorage
+    localStorage.setItem("userLogin", userConvertJSON);
+
+    // localStorage.removeItem("userLogin")
+
+    // Đăng ký người dùng:
+
+    // Nhấn đăng ký --> prompt --> email, username, password ---> accounts --> Lưu trữ tất cả thông tin người dùng đăng ký
+    function bai_01() {
+      const email = prompt("Nhập email");
+      const password = prompt("Nhập password");
+      const username = prompt("Nhập user name");
+
+      const userAccount = {
+        email: email,
+        password: password,
+        username: username,
+      };
+
+      // Chuyển thành JSON
+      const userAccountToJSON = JSON.stringify(userAccount);
+      console.log("kiểm tra JSON", userAccountToJSON);
+
+      //   Gửi lên localStorage
+      localStorage.setItem("userAccount", userAccountToJSON);
+    }
+
+    function getUserAccount() {
+      const userAccout = JSON.parse(localStorage.getItem("userAccount"));
+      console.log("Kiểm tra userAccount", userAccout);
+    }
+
+    function deleteData() {
+      const key = prompt("Bạn muốn xóa gì?");
+      localStorage.removeItem(key);
+    }
+
+    function deleteAllData() {
+      // Xác nhận người dùng muốn xóa hay không
+      const isDelete = confirm("Bạn có chắn chắn xóa");
+      if (isDelete) {
+        localStorage.clear();
+      }
+    }
+
+    function bai_02() {
+      sessionStorage.setItem("name", JSON.stringify("Hello Session"));
+    }
+
+    function getDataSession() {
+      const data = sessionStorage.getItem("name");
+      console.log("kiểm tra data", data);
+    }
+
+    // ----------------------------Bài 3--------------//
+
+    function bai_03_add_username() {
+      // B1: Lấy được thông tin username
+
+      const inputElement = document.querySelector("#input-03");
+
+      const userNameValue = inputElement.value;
+
+      //   Chuyển thành JSON
+      const userNameConvertJSON = JSON.stringify(userNameValue);
+
+      // Đưa lên sessionStorage
+      sessionStorage.setItem("username", userNameConvertJSON);
+
+      //   Xóa value trong ô input
+
+      inputElement.value = "";
+
+      //   render lại dữ liệu
+      bai_03_render_username();
+    }
+
+    function bai_03_delete_username() {
+      sessionStorage.removeItem("username");
+
+      //   render lại dữ liệu
+      bai_03_render_username();
+    }
+
+    function bai_03_render_username() {
+      // Lấy dữ liệu từ sessionStorage
+
+      const data = sessionStorage.getItem("username");
+
+      // chuyển từ json thành dữ liệu thông thường
+
+      const username = JSON.parse(data);
+
+      //   Element sẽ hiển thị
+
+      const resultElement = document.querySelector("#result-03");
+
+      //   gán lại là kết quả
+
+      resultElement.innerHTML = username;
+    }
+
+    function bai_04_get_cookie() {
+      const cookieData = document.cookie;
+      console.log("Kiểm tra cookie", cookieData);
+    }
+    function bai_04_set_cookie() {
+      const today = new Date("2024-07-20").toUTCString();
+      console.log(today);
+      document.cookie = `token=123456wer12312;expires=${today}`;
+      document.cookie = "username=sdfsfs";
+      console.log("Kiểm tra cookie", document.cookie);
+    }
+  </script>
+</html>
