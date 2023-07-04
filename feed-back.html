@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feed back</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      body {
+        background-color: #3a0860;
+      }
+      .container {
+        width: 800px;
+        margin: 100px auto;
+      }
+
+      .card {
+        padding: 40px;
+        background-color: #fff;
+        border-radius: 8px;
+        margin-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        position: relative;
+      }
+      .card-title {
+        font-size: 1.8em;
+        color: rgb(58, 21, 58);
+        text-align: center;
+      }
+      .mark {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+        background-color: #b1acac;
+        cursor: pointer;
+        font-weight: 700;
+        border: 2px solid white;
+      }
+      .mark:hover {
+        color: #fff;
+        background-color: rgb(244, 8, 217);
+      }
+      .list-mark {
+        display: flex;
+        justify-content: space-between;
+      }
+      .active {
+        color: #fff;
+        background-color: rgb(244, 8, 217);
+      }
+      .position-left {
+        position: absolute;
+        top: -10px;
+        left: -10px;
+      }
+      .position-right {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        gap: 10px;
+      }
+      .position-right i {
+        color: rgb(244, 8, 217);
+        cursor: pointer;
+      }
+
+      .input-group {
+        padding: 5px;
+        border-radius: 5px;
+        border: 2px solid rgb(149, 142, 142);
+        display: flex;
+        gap: 10px;
+      }
+      .input-group input {
+        border: none;
+        height: 40px;
+        width: 100%;
+        outline: none;
+      }
+      .add-edit {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: grey;
+        cursor: pointer;
+        font-size: 1.2em;
+        font-weight: 700;
+      }
+      .add-edit:hover {
+        background-color: #50084a;
+        color: white;
+      }
+      .review-info {
+        display: flex;
+        color: white;
+        justify-content: space-between;
+        font-weight: 700;
+        font-size: 1.2em;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-title">Nội dung</div>
+        <div class="list-mark">
+          <input type="button" value="1" class="mark" />
+          <input type="button" value="2" class="mark" />
+          <input type="button" value="3" class="mark" />
+          <input type="button" value="4" class="mark" />
+          <input type="button" value="5" class="mark" />
+          <input type="button" value="6" class="mark" />
+          <input type="button" value="7" class="mark" />
+          <input type="button" value="8" class="mark" />
+          <input type="button" value="9" class="mark" />
+          <input type="button" value="10" class="mark" />
+        </div>
+        <div class="input-group">
+          <input type="text" placeholder="Write review" />
+          <button class="add-edit" onclick="handleAddEdit()">Add</button>
+        </div>
+      </div>
+      <div class="container-review">
+        <div class="review-info">
+          <div class="total-reviews">2 reivews</div>
+          <div class="average-reviews">Average reviews: 9</div>
+        </div>
+        <div class="list-review">
+          <div class="card">
+            <input type="button" value="1" class="mark position-left active" />
+            <div class="position-right">
+              <i class="fa-regular fa-pen-to-square"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const reviews = [
+      {
+        mark: 8,
+        content: "Thầy giáo rất truyền cảm hứng!",
+      },
+      {
+        mark: 10,
+        content: "Phương pháp dạy học thú vị và sáng tạo.",
+      },
+      {
+        mark: 9,
+        content: "Thầy giáo giải thích rõ ràng và dễ hiểu.",
+      },
+      {
+        mark: 8,
+        content: "Dạy học hấp dẫn, không nhàm chán.",
+      },
+      {
+        mark: 8,
+        content: "Thầy giáo tạo điều kiện tương tác tốt với học sinh.",
+      },
+    ];
+    // Tính năng chọn điểm
+
+    // Lấy tất cả input trong list-mark --> querySelectorAll()
+
+    const inputMarks = document.querySelectorAll(".list-mark .mark");
+    console.log("Kiểm tra input", inputMarks);
+
+    inputMarks.forEach((element) => {
+      element.addEventListener("click", () => {
+        //Cách 1: Gỡ bỏ tất cả class là active trong các input
+        // inputMarks.forEach((input) => {
+        // if (input.value !== element.value) {
+        //   input.classList.remove("active");
+        // }
+        // });
+
+        // Cách 2: gỡ bỏ element active trước đó
+        const inputBefore = document.querySelector(".list-mark .active");
+        // console.log(11111, inputBefore);
+        if (inputBefore?.value !== element.value) {
+          inputBefore?.classList.remove("active");
+        }
+        element.classList.toggle("active");
+      });
+    });
+
+    function handleAddEdit(index) {
+      // Lấy điểm
+      const inputActiveValue =
+        document.querySelector(".list-mark .active")?.value;
+      // Lấy nội dung
+      const contentElement = document.querySelector(".input-group input");
+      const review = {
+        mark: "",
+        content: contentElement.value,
+      };
+      if (inputActiveValue) {
+        review.mark = inputActiveValue;
+      }
+
+      if (index !== undefined) {
+        // nó là edit --> được set index từ handleEdit
+        const addEditElement = document.querySelector(".add-edit");
+        // Sửa lại thành add
+        addEditElement.innerHTML = "Add";
+
+        // Sửa lại thành add
+        addEditElement.setAttribute("onclick", `handleAddEdit()`);
+        //là edit
+        reviews.splice(index, 1, review);
+      } else {
+        // Nó là add
+        reviews.push(review);
+      }
+
+      contentElement.value = "";
+      renderReviews();
+    }
+
+    function handleEdit(index) {
+      const contentElement = document.querySelector(".input-group input");
+      const addEditElement = document.querySelector(".add-edit");
+
+      //   Set button add --> update
+      addEditElement.innerHTML = "Update";
+      addEditElement.setAttribute("onclick", `handleAddEdit(${index})`);
+
+      const review = reviews.find((item, i) => i === index);
+
+      //   Truyền dư liệu lên form
+      contentElement.value = review.content;
+
+      //   Tìm giá trị giống nhau
+
+      //   Thêm class cho input
+      inputMarks.forEach((element) => {
+        element.classList.remove("active");
+        if (element.value == review.mark) {
+          element.classList.add("active");
+        }
+      });
+    }
+    renderReviews();
+
+    function renderReviews() {
+      // Lấy element cần thay thế
+
+      const totalReviewsElement = document.querySelector(".total-reviews");
+      const averageReviewsElement = document.querySelector(".average-reviews");
+
+      totalReviewsElement.innerHTML = reviews.length;
+
+      const listReview = document.querySelector(".list-review");
+      let contentListReview = "";
+
+      reviews.forEach((item, index) => {
+        contentListReview += ` <div class="card"><input type="button" value="${item.mark}" class="mark position-left active" />
+            <div class="position-right">
+              <i class="fa-regular fa-pen-to-square" onclick="handleEdit(${index})"></i>
+              <i class="fa-solid fa-trash-can"></i>
+             
+            </div>
+            <p>${item.content}</p></div>`;
+      });
+
+      listReview.innerHTML = contentListReview;
+    }
+  </script>
+</html>
