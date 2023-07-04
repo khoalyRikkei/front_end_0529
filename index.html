@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session 23 - JQUERY</title>
+    <style>
+      body {
+        height: 3000px;
+      }
+
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: orange;
+      }
+
+      #notify {
+        width: 200px;
+        height: 100px;
+        background-color: #24cfee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 50px;
+        right: 20px;
+      }
+      #change-box {
+        background-color: red;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Session 23 - JQUERY</h1>
+    </header>
+
+    <main>
+      <fieldset>
+        <legend>Ví dụ 1</legend>
+        <h3>Ví dụ selector và event của Jquery</h3>
+        <button id="btn-1">Click me</button>
+        <button id="btn-2">Click by JS</button>
+
+        <button id="btn-toggle">Click to toggle</button>
+        <p id="result-1">Rikkei Academy Đà Nẵng</p>
+
+        <input type="text" id="input-1" />
+        <p id="result-2">Hello World</p>
+        <input type="text" id="input-2" />
+        <br />
+
+        <button id="toggle-box">Toggle box</button>
+        <div class="box" id="box"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Ví dụ 1</legend>
+        <h3>Ví dụ hiệu ứng</h3>
+
+        <button id="btn-3">Thông báo</button>
+
+        <p id="notify">Hoàn thành</p>
+        <p id="change-box"></p>
+      </fieldset>
+    </main>
+  </body>
+
+  <script src="./js/scritp.js"></script>
+</html>
